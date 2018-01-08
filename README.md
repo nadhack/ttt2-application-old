@@ -1,6 +1,6 @@
 # Tic-Tac-Turtle MkII - Application
 
-##Overview
+## Overview
 This Python application forms part of the Tic-Tac-Turtle MkII
 project. It runs on a Raspberry Pi 3 and performs the following tasks:
 
