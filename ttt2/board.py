@@ -73,21 +73,21 @@ class Board:
         if self.isFull():
             return Outcome.TIE, Player.NONE
         s = self._state
-        if s[0] and s[0] == s[1] == s[2]:
+        if s[0] != Player.NONE and s[0] == s[1] == s[2]:
             return Outcome.WIN_012, s[0]
-        if s[3] and s[3] == s[4] == s[5]:
+        if s[3] != Player.NONE and s[3] == s[4] == s[5]:
             return Outcome.WIN_345, s[3]
-        if s[6] and s[6] == s[7] == s[8]:
+        if s[6] != Player.NONE and s[6] == s[7] == s[8]:
             return Outcome.WIN_678, s[6]
-        if s[0] and s[0] == s[3] == s[6]:
+        if s[0] != Player.NONE and s[0] == s[3] == s[6]:
             return Outcome.WIN_036, s[0]
-        if s[1] and s[1] == s[4] == s[7]:
+        if s[1] != Player.NONE and s[1] == s[4] == s[7]:
             return Outcome.WIN_147, s[1]
-        if s[2] and s[2] == s[5] == s[8]:
+        if s[2] != Player.NONE and s[2] == s[5] == s[8]:
             return Outcome.WIN_258, s[2]
-        if s[0] and s[0] == s[4] == s[8]:
+        if s[0] != Player.NONE and s[0] == s[4] == s[8]:
             return Outcome.WIN_048, s[0]
-        if s[2] and s[2] == s[4] == s[6]:
+        if s[2] != Player.NONE and s[2] == s[4] == s[6]:
             return Outcome.WIN_246, s[2]
         return Outcome.NONE, Player.NONE
 

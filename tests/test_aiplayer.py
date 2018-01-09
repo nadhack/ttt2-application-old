@@ -20,30 +20,25 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import sys
+import unittest
 
 from game import *
 from aiplayer import *
 
 
-def main(args=None):
-    if args is None:
-        args = sys.argv[1:]
+class TestAiPlayer(unittest.TestCase):
+    def test_self_play(self):
+        for n in range(0, 100):
+            g = Game(Player.NAUGHT if n & 1 else Player.CROSS)
+            b = g.board
+            ai = AiPlayer(True)
 
-    g = Game(Player.CROSS)
-    b = g.board
-    ai = AiPlayer(True)
+            while True:
+                outcome = b.outcome()
+                if outcome[0] != Outcome.NONE:
+                    break
+                move = ai.findBestMove(g)
+                b[move] = g.currentPlayer
+                g.togglePlayer()
 
-    while True:
-        outcome = b.outcome()
-        if outcome[0] != Outcome.NONE:
-            break;
-        move = ai.findBestMove(g)
-        b[move] = g.currentPlayer
-        b.dump()
-        g.togglePlayer()
-
-    print(outcome)
-
-if __name__ == "__main__":
-    main()
+            self.assertEqual((Outcome.TIE, Player.NONE), outcome)
