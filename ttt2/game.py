@@ -25,9 +25,9 @@ from board import *
 
 class Game:
     def __init__(self, firstPlayer: Player = Player.CROSS):
-        self.currentPlayer = firstPlayer
+        self.current_player = firstPlayer
         self.board = Board()
 
-    def togglePlayer(self):
-        self.currentPlayer = self.currentPlayer.opponent()
-        return self.currentPlayer
+    def toggle_player(self):
+        self.current_player = self.current_player.opponent()
+        return self.current_player

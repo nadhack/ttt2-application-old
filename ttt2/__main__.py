@@ -20,30 +20,31 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+import argparse
 import sys
-
-from game import *
-from aiplayer import *
-
 
 def main(args=None):
     if args is None:
         args = sys.argv[1:]
 
-    g = Game(Player.CROSS)
-    b = g.board
-    ai = AiPlayer(True)
+    parser = argparse.ArgumentParser()
 
-    while True:
-        outcome = b.outcome()
-        if outcome[0] != Outcome.NONE:
-            break;
-        move = ai.findBestMove(g)
-        b[move] = g.currentPlayer
-        b.dump()
-        g.togglePlayer()
+    parser.add_argument(
+        "-f", "--fullscreen",
+        help="Allows UI to occupy entire screen",
+        action="store_true"
+    )
 
-    print(outcome)
+    parser.add_argument(
+        "-r", "--randomize",
+        help="Randomize AI player moves",
+        action="store_true"
+    )
+
+    args = parser.parse_args(args)
+    print(args.fullscreen)
+
+
 
 if __name__ == "__main__":
     main()

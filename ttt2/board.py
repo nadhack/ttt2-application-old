@@ -63,14 +63,14 @@ class Board:
     def __getitem__(self, item):
         return self._state[item]
 
-    def availableCells(self):
+    def available_cells(self):
        return [i for i, cell in enumerate(self._state) if cell == Player.NONE]
 
-    def isFull(self):
+    def is_full(self):
         return self._state.count(Player.NONE) == 0
 
     def outcome(self):
-        if self.isFull():
+        if self.is_full():
             return Outcome.TIE, Player.NONE
         s = self._state
         if s[0] != Player.NONE and s[0] == s[1] == s[2]:

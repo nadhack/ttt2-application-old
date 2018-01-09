@@ -29,7 +29,7 @@ class TestBoard(unittest.TestCase):
     def test_available_empty(self):
         b = Board()
 
-        self.assertEqual(b.availableCells(), [0, 1, 2, 3, 4, 5, 6, 7, 8])
+        self.assertEqual(b.available_cells(), [0, 1, 2, 3, 4, 5, 6, 7, 8])
 
     def test_available_n(self):
         b = Board()
@@ -37,13 +37,13 @@ class TestBoard(unittest.TestCase):
         for i in range(0, 9):
             b[i] = Player.NAUGHT
             del a[0]
-            self.assertEqual(a, b.availableCells())
+            self.assertEqual(a, b.available_cells())
 
     def test_is_full(self):
         b = Board()
         for i in range(0, 9):
             b[i] = Player.CROSS
-        self.assertTrue(b.isFull())
+        self.assertTrue(b.is_full())
 
     def test_no_outcome(self):
         b = Board()

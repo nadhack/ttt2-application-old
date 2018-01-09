@@ -37,8 +37,8 @@ class TestAiPlayer(unittest.TestCase):
                 outcome = b.outcome()
                 if outcome[0] != Outcome.NONE:
                     break
-                move = ai.findBestMove(g)
-                b[move] = g.currentPlayer
-                g.togglePlayer()
+                move = ai.find_best_move(g)
+                b[move] = g.current_player
+                g.toggle_player()
 
             self.assertEqual((Outcome.TIE, Player.NONE), outcome)
